@@ -18,9 +18,8 @@ export default function Cart() {
       </h2>
       <button onClick={() => dispatch(changeName())}>닉네임 바꾸기</button>
       <h3>회원가입기간 : {state.user.memberYear}년</h3>
-      <button onClick={dispatch(changeYear(1))}>+</button>
-      <button onClick={dispatch(changeYear(-1))}>-</button>
-      <button></button>
+      <button onClick={() => dispatch(changeYear(1))}>+</button>
+      <button onClick={() => dispatch(changeYear(-1))}>-</button>
       <Table striped bordered hover>
         <thead>
           <tr>
