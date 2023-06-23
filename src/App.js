@@ -1,7 +1,5 @@
 import "./App.css";
-import { ReactDOM } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { connect } from "react-redux";
 import data from "./pages/productData";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
@@ -46,17 +44,17 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/about/info");
+                navigate("/about");
               }}
             >
               Information
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/about/laca");
+                navigate("/cart");
               }}
             >
-              Location
+              Cart
             </Nav.Link>
           </Nav>
         </Container>
@@ -66,7 +64,7 @@ function App() {
           path="/"
           element={
             <Container>
-              <img src={process.env.PUBLIC_URL + "./images/visual_main_01.jpg"} alt="" />
+              <img src={process.env.PUBLIC_URL + "/images/visual_main_01.jpg"} alt="vm" style={{ width: "100%" }} />
               <Row>
                 {bests.map((best, index) => {
                   return (
@@ -76,25 +74,27 @@ function App() {
                         <h4>{best.title}</h4>
                         <p>{best.desc}</p>
                         <p>{best.price}</p>
-                        <button
-                          onClick={() => {
-                            dispatch(addItem({ id: best.id, title: best.title, price: best.price }));
-                          }}
-                        ></button>
                       </Link>
+                      <button
+                        onClick={() => {
+                          dispatch(addItem({ id: best.id, title: best.title, count: 1 }));
+                        }}
+                      >
+                        장바구니
+                      </button>
                     </Col>
                   );
                 })}
-                <Col> 1 of 1 </Col>
               </Row>
             </Container>
           }
         />
         <Route path="/" element={<div>Home Page</div>}></Route>
-        <Route path="about" element={<About />}></Route>
-        <Route path="info" element={<div>Information</div>}></Route>
+        {/* <Route path="info" element={<Infomation />}></Route> */}
+
         <Route path="loca" element={<div>Location</div>}></Route>
         <Route path="detail/:id" element={<Detail bests={bests} />}></Route>
+        <Route path="cart" element={<Cart />} />
       </Routes>
     </div>
   );

@@ -13,6 +13,13 @@ export default function Detail(props) {
       <img src={bests[id].image} alt="" style={{ width: 500 }} />
       <h4>{bests[id].title}</h4>
       <p>{bests[id].price}</p>
+      <button
+        onClick={() => {
+          dispatch(addItem({ id: bests[id].id, title: bests[id].title, count: 1 }));
+        }}
+      >
+        장바구니
+      </button>
     </div>
   );
 }

@@ -16,11 +16,14 @@ const user = createSlice({
       state.name = state.name + ":Green";
     },
     changeYear(state, action) {
-      state.memberYear += action.payload;
+      state.memberYear += action.payLoad;
     },
     //단일 값일 경우 리턴으로 값을 돌리지만 객체 배열은 가져오는거라 리턴 필요x
   },
 });
+
+export const { changeYear, changeName } = user.actions;
+
 const cart = createSlice({
   name: "cart",
   initialState: [],
@@ -41,10 +44,9 @@ const cart = createSlice({
 
 export const { addItem } = cart.actions;
 
-export const { changeYear, changeName } = user.actions;
-
 export default configureStore({
   reducer: {
     user: user.reducer,
+    cart: cart.reducer,
   },
 });
