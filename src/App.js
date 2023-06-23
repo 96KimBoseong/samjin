@@ -44,7 +44,7 @@ function App() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/about");
+                navigate("/about/");
               }}
             >
               Information
@@ -94,6 +94,7 @@ function App() {
 
         <Route path="loca" element={<div>Location</div>}></Route>
         <Route path="detail/:id" element={<Detail bests={bests} />}></Route>
+        <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
       </Routes>
     </div>

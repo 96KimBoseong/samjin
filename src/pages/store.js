@@ -5,7 +5,7 @@ const user = createSlice({
   //initialState: "홍길동",
   initialState: { name: "홍길동", memberYear: 1 },
 
-  reducer: {
+  reducers: {
     /*   changeName() {
       return "이순신";
     }, */
@@ -31,12 +31,12 @@ const cart = createSlice({
     addItem(state, action) {
       //state.push(action, payload);
       const index = state.findIndex((findId) => {
-        return findId.id === action.payLoad.id;
+        return findId.id === action.payload.id;
       });
       if (index > -1) {
         state[index].count++;
       } else {
-        state.push(action.payLoad);
+        state.push(action.payload);
       }
     },
   },
